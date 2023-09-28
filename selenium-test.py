@@ -11,7 +11,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 def login(browser_instance, url):
     try:
         browser_instance.get(url)
@@ -27,12 +26,7 @@ def login(browser_instance, url):
         logging.error(f"An error occurred while logging in: {e}")
     time.sleep(3)
 
-
-
 def test_data_exports(browser_instance):
-
-    login(browser_instance, 'https://nbininfinitedp.com/DataExports')
-    time.sleep(5)
 
     browser_instance.get('https://nbininfinitedp.com/DataExports')
 
@@ -87,5 +81,8 @@ options = Options()
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
+login(driver, 'https://nbininfinitedp.com/DataExports')
+time.sleep(5)
 test_data_exports(driver)
+
 driver.close()
