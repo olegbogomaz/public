@@ -1,4 +1,4 @@
-import pytest
+
 import time
 import logging
 from datetime import datetime, timedelta
@@ -10,12 +10,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
-@pytest.fixture(scope="module")
-def browser():
-    driver = webdriver.Chrome()
-    yield driver
-    driver.quit()
 
 
 def login(browser_instance, url):
@@ -34,7 +28,7 @@ def login(browser_instance, url):
     time.sleep(3)
 
 
-@pytest.mark.usefixtures("browser")
+
 def test_data_exports(browser_instance):
 
     login(browser_instance, 'https://nbininfinitedp.com/DataExports')
